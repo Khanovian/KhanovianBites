@@ -1,0 +1,227 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3307
+-- Generation Time: Aug 30, 2023 at 10:58 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `oceanbites`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `additems`
+--
+
+CREATE TABLE `additems` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `additems`
+--
+
+INSERT INTO `additems` (`id`, `user_id`, `name`, `price`) VALUES
+(1, 1, 'Chipotle Orange Shrimp With Cilantro Rice', 80);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `date` int(11) NOT NULL,
+  `no` varchar(100) NOT NULL,
+  `message` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`name`, `email`, `date`, `no`, `message`) VALUES
+('Muhammad zaid', 'khanovian1@gmail.com', 2023, '3', 'coffee');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `massage` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `product_price` varchar(100) NOT NULL,
+  `product_desc` varchar(100) NOT NULL,
+  `product_picture` mediumblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `product_name`, `product_price`, `product_desc`, `product_picture`) VALUES
+(1, 'Briyani', '2500', '150 Diyega', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profilst`
+--
+
+CREATE TABLE `profilst` (
+  `firstname` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Country` varchar(255) NOT NULL,
+  `region` varchar(255) NOT NULL,
+  `image` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `register`
+--
+
+CREATE TABLE `register` (
+  `fullname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `register`
+--
+
+INSERT INTO `register` (`fullname`, `username`, `email`, `password`) VALUES
+('husian', 'khan', 'husian@gmail.com', '$2y$10$AmIvui9i19Xo518c5WYNZesI8F/lPJjTmXLcwSIIsahL9kJ8CB7rO');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team`
+--
+
+CREATE TABLE `team` (
+  `chef_id` int(11) NOT NULL,
+  `Chef_Name` varchar(50) NOT NULL,
+  `Chef_Designation` varchar(50) NOT NULL,
+  `Chef_Picture` mediumblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_register`
+--
+
+CREATE TABLE `user_register` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_register`
+--
+
+INSERT INTO `user_register` (`id`, `username`, `email`, `password`) VALUES
+(1, 'husian', 'husnain@gmail.com', '$2y$10$HtC7uSpN6xrb69ZtkkbhT.B0fZAlwo87cNhqC.YTCOgj1.t6VAzYi'),
+(2, 'zaidjan', 'zaidwaheed576@gmail.com', '$2y$10$LTravGFCXMEpjID47cWFJuDhnC8MIr/h1wdU96LjKudwitEBov1oy');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `additems`
+--
+ALTER TABLE `additems`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`chef_id`);
+
+--
+-- Indexes for table `user_register`
+--
+ALTER TABLE `user_register`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `additems`
+--
+ALTER TABLE `additems`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `team`
+--
+ALTER TABLE `team`
+  MODIFY `chef_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_register`
+--
+ALTER TABLE `user_register`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
